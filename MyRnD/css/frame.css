@@ -1,0 +1,5 @@
+@charset "utf-8";
+
+body{display: flex; justify-content: center; align-items: center; width: 100vw; font-size: 16px; box-sizing: border-box; background: #fff; margin: 0;}
+#root{width: 100%;}
+#wrap{max-width: 1300px; width: 100%; margin: 0 auto;}

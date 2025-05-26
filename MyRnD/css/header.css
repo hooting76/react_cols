@@ -1,0 +1,6 @@
+@charset "utf-8";
+
+header{width: 100%; }
+.tit_txt{font-weight: bold; text-align: center;}
+.tit_txt > h1{font-size: 24px;}
+.tit_txt > h2{font-size: 18px;}
