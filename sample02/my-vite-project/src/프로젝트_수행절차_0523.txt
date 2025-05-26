@@ -1,0 +1,86 @@
+1. 기존 수업중 작성하였던 HTML/CSS 소스를 다운받아서 가져온다.
+
+ex) 모달 창 작성 : https://cafe.naver.com/sngitj4/274
+
+2. Modal.js 파일을 작성합니다.
+
+import React, { Component } from 'react';
+
+class Modal extends Component {
+
+    render() {
+
+        return()
+	}		
+}
+
+3. HTML 파일 중 모달 박스에 해당되는 부분을 복사하여 붙인 후,
+주석을 제가하고 class 속성을 className으로 치환합니다.
+
+
+4. CSS 파일(popup_style.css)을 css 폴더에 붙인 후,
+import 합니다.
+ 
+ 
+import React, { Component } from 'react';
+
+import './css/popup_style.css';
+
+class Modal extends Component {
+
+    render() {
+
+        return(
+            <div className="modal">
+                
+                <div className="modal_header">
+                
+                    <div className="modal_header_icon">
+                        <span className="material-symbols-outlined">
+                            web_asset
+                        </span>	        
+                    </div>
+                    
+                    <div className="modal_header_title">
+                        제목
+                    </div>
+                    
+                    <div className="modal_header_close">
+
+                        <a href="#" id="modal_close_btn">
+                            <span className="material-symbols-outlined">
+                                close
+                            </span>
+                        </a>
+                    </div>
+
+                </div>
+                
+                <div className="modal_body">
+                    글 내용입니다.
+                </div>
+                
+            </div>
+        )
+    }
+}
+
+5. 다른 컴포넌트에서 호출하도록 하기 위해 export default Modal; 구문을 마지막에 작성합니다.
+
+6. App.js에 import 하도록 코딩합니다.
+
+import Modal from './Modal';
+
+
+7. react icon 라이브러리 설치 
+: npm install react-icons --save
+
+8. react icon 및 인라인 CSS 적용
+
+<div className="modal_header_icon">
+	<MdOutlineWebAsset style={{fontSize:'25px'}} />        
+</div>
+
+<a href="#" id="modal_close_btn">
+	<MdClose style={{fontSize:'25px'}} />
+</a>
