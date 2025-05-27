@@ -4,7 +4,6 @@ import HeaderModule from '../component/header';
 import MainModule from '../component/main_comp';
 import FooterModule from '../component/footer';
 
-// import '../css/reset.css';
 import '../css/frame.css';
 
 function App() {
@@ -15,6 +14,7 @@ function App() {
         <HeaderModule />
         <MainModule />
         <FooterModule />
+        
       </div>
     </>
   )

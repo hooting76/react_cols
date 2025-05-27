@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import svcKey from '../src/data/svc.json'
 
-import '../css/main_module.css'
-
-class Main_module extends Component {
-
-  callSvc = () =>{
+callSvc = () =>{
     let today = new Date();
     let year = today.getFullYear();
     let month = ('0' + (today.getMonth() + 1)).slice(-2);
     let day = ('0' + today.getDate()).slice(-2);
     let today_num = year + month + day;
-    let hours = (today.getHours() - 1) + "00";
+    let hours = today.getHours() + "00";
 
     var xhr = new XMLHttpRequest();
     var url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst'; /*URL*/
@@ -34,17 +29,16 @@ class Main_module extends Component {
       if (this.readyState == 4) {
         // 날씨데이터 객체
         const obj_txt = JSON.parse(this.responseText);
-        // console.log(obj_txt);
         let obj_info_list = obj_txt.response.body.items.item;
         
-        let Weather_info_list_arr = new Array;
+        let weather_info_list_arr = new Array;
         obj_info_list.forEach(data => {
             // console.log(data.category);
             switch(data.category){
                 case "TMP" : 
                     // 1시간 기온 ℃
                     // console.log("현재 기온: "+ data.fcstValue + " ℃");
-                    Weather_info_list_arr.push({"temp":data.fcstValue});
+                    weather_info_list_arr.push({"temp":data.fcstValue});
                     break;
 
                 case "UUU" : 
@@ -76,14 +70,14 @@ class Main_module extends Component {
                     let direct_vec = getDirection(vec_prs);
                     // console.log("풍향 : " + direct_vec + "방향 (방위: " + vec_prs + "도)");
 
-                    Weather_info_list_arr.push({"wind_direction":direct_vec}); //풍향
-                    Weather_info_list_arr.push({"wind_deg":data.fcstValue}); //방위
+                    weather_info_list_arr.push({"wind_direction":direct_vec}); //풍향
+                    weather_info_list_arr.push({"wind_deg":data.fcstValue}); //방위
                 break;                                    
                     
                 case "WSD" : 
                     // 풍속  m/s
                     // console.log("풍속: " + data.fcstValue + "m/s");
-                    Weather_info_list_arr.push({"wind_spd":data.fcstValue}); //풍속
+                    weather_info_list_arr.push({"wind_spd":data.fcstValue}); //풍속
                     break;
 
                 case "SKY" : 
@@ -92,19 +86,19 @@ class Main_module extends Component {
                     switch(switch_val_sky){
                         case 1 : 
                             // console.log("날씨 : 맑음");
-                            Weather_info_list_arr.push({"sky":"sunny"});
+                            weather_info_list_arr.push({"sky":"sunny"});
                             break;
                         case 3 : 
                             // console.log("날씨 : 구름많음");      
-                            Weather_info_list_arr.push({"sky":"sunny_and_cloudy"});
+                            weather_info_list_arr.push({"sky":"sunny_and_cloudy"});
                             break;             
                         case 4 : 
                             // console.log("날씨 : 흐림");
-                            Weather_info_list_arr.push({"sky":"cloudy"});
+                            weather_info_list_arr.push({"sky":"cloudy"});
                             break;                   
                         default :
                             // console.log("날씨 호출 오류");
-                            Weather_info_list_arr.push({"sky":null});
+                            weather_info_list_arr.push({"sky":null});
                             break;                             
                     };
                 break;
@@ -119,23 +113,23 @@ class Main_module extends Component {
                     switch(switch_val_rain_type){
                         case 0 : 
                             // console.log("강수 형태 : 없음");
-                            Weather_info_list_arr.push({"rain_type":"normal"});
+                            weather_info_list_arr.push({"rain_type":"normal"});
                             break;
                         case 1 : 
                             // console.log("강수 형태 : 비");
-                            Weather_info_list_arr.push({"rain_type":"rain"});
+                            weather_info_list_arr.push({"rain_type":"rain"});
                             break;    
                         case 2 : 
                             // console.log("강수 형태 : 비 혹은 눈");
-                            Weather_info_list_arr.push({"rain_type":"rain/snow"});
+                            weather_info_list_arr.push({"rain_type":"rain/snow"});
                             break;                            
                         case 3 : 
                             // console.log("강수 형태 : 눈");
-                            Weather_info_list_arr.push({"rain_type":"snow"});
+                            weather_info_list_arr.push({"rain_type":"snow"});
                             break;                         
                         case 4 : 
                             // console.log("강수 형태 : 소나기");
-                            Weather_info_list_arr.push({"rain_type":"shower"});
+                            weather_info_list_arr.push({"rain_type":"shower"});
                             break;                                                                                
                     };
                 break;
@@ -145,10 +139,10 @@ class Main_module extends Component {
                     // 강수확률, %
                     if(data.fcstValue == 0){
                         // console.log("강수확률: 없음(0%)");   
-                        Weather_info_list_arr.push({"rain_perct":0});
+                        weather_info_list_arr.push({"rain_perct":0});
                     }else{
                         // console.log("강수확률: " + data.fcstValue + " %");
-                        Weather_info_list_arr.push({"rain_perct":data.fcstValue});
+                        weather_info_list_arr.push({"rain_perct":data.fcstValue});
                     };
                 break;          
     
@@ -157,10 +151,10 @@ class Main_module extends Component {
                     // 파고, m
                     if(0 < data.fcstValue && data.fcstValue > 20){
                         // console.log("파고: " + data.fcstValue + " m");
-                        Weather_info_list_arr.push({"wave":data.fcstValue});
+                        weather_info_list_arr.push({"wave":data.fcstValue});
                     }else{
                         // console.log("파고: 해당없음");
-                        Weather_info_list_arr.push({"wave":0});
+                        weather_info_list_arr.push({"wave":0});
                     };
                 break;        
 
@@ -169,47 +163,25 @@ class Main_module extends Component {
                     // 1시간 강수량, 범주 (1 mm)
                     if(data.fcstValue == "강수없음"){
                         // console.log("시간당 강수량: 0 mm");
-                        Weather_info_list_arr.push({"rain_drop":0});
+                        weather_info_list_arr.push({"rain_drop":0});
                     }else{
                         // console.log("시간당 강수량: " + data.fcstValue + "mm");
-                        Weather_info_list_arr.push({"rain_drop":data.fcstValue});
+                        weather_info_list_arr.push({"rain_drop":data.fcstValue});
                     };
                 break;
 
                 case "REH" : 
-                    Weather_info_list_arr.push({"humidity":data.fcstValue});
+                    weather_info_list_arr.push({"humidity":data.fcstValue});
                 break;       
                 
                 default :
-                    Weather_info_list_arr.push({"day":today_num});
+                    weather_info_list_arr.push({"day":today_num});
                 break;
             };
         });
-        console.log(Weather_info_list_arr);
+        console.log(weather_info_list_arr);
         // loadModelAndPredict(weather_info_list_arr);
-        
     };
 }; xhr.send(''); };
 
-//-------------------------------------------------
-    render() {
-
-        return(
-          <main className="main_module">
-
-            <h3 className="main_tit">
-              <label htmlFor="StartBtn">내일 날씨 : </label>
-              <button type="button" id='StartBtn' name='StartBtn' onClick={() => this.callSvc()}>예측 시작</button>
-            </h3>            
-
-            <div className="list_wrap">
-              {/* 작업 영역 */}
-            </div>
-
-          </main>
-        )
-    }
-  
-}
-
-export default Main_module;
+export default weatherApi;
