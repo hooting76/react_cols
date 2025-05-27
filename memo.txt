@@ -1,1 +1,79 @@
 리엑트 아이콘 라이브러리 : https://react-icons.github.io/react-icons/icons/md/
+
+
+1. vite react 프로젝트 생성하기
+ 1) 해당 폴더로 접근 
+ 2) cmd 에서 npm create vite@latest 실행
+ 3) 프로젝트 이름 지정(한글x, 특수문자x, 영어 대문자 사용x) 후 엔터.
+ 4) framework 를 react로 선택 후 엔터
+ 5) 일단 자바스크립트로 선택 후 엔터
+
+ 이후, 메뉴얼에 따라 진행
+ 생성된 폴더로 진입해서(change directory)
+ npm 명령어 진행
+
+==================================================================================
+
+0527
+ 1. 코드 파편화 => 이전 버전에서는 지원했지만 신규 버전에서는 지원이 안되는 경우.
+
+ 2. 인스턴스(instance) : 인스턴트 오브젝트(instant obj)
+
+      인스턴스는 언제든 삭제 가능한 임시로 사용하는 오브젝트
+      ex) let obj = new Array();
+      obj.멤버 
+    ============================================================
+      obj     : 객체 변수 => 인스턴스 => (협의) 객체
+      new     : 객체 생성 연산자
+      Array   : 클래스
+      Array() : 클래스의 생성자(구축자)
+
+ 3. 오버 라이딩(over-rid(e)-ing)
+    - 함수를 전제.
+    - 부모 클래스에서 "상속"된 메서드가 있는데, 여기에 내가 하고싶은걸 커스터마이징 한다.
+    - 상속을 전제로 한다.
+    - toString() : 문자열로 변환하다
+        : 객체 => 문자열 변환
+        : 변형(커스텀) => 객체 멤버 필드들(속성)내용 열람(보기)
+        : 인스턴스.toString() = 인스턴스
+
+ 4. constructor(생성자)
+    - state(컴포넌트의 상태) 값을 초기화 하거나 메서드를 바인딩(묶어두기) 할 때 사용한다.
+    - 해당 컴포넌트가 마운트 되기 전 호출된다.
+
+ 5. mount(마운트)
+    - 마운트 : DOM 객체가 생성되고 브라우저에 나타나는 것을 의미
+
+ 6. super(props) => 연관 : constructor(생성자)
+
+    - 부모클래스 인스턴스를 의미함.
+
+    - 리엑트의 결함으로 인하여 공식문서에서 다음을 권고하였음. 
+        : React.Component를 상속한 컴포넌트의 생성자(constructor)를 구현할 때에는 다른 구문에 앞서 super(props)를 호출해야 합니다. 
+        그렇지 않으면 this.props가 생성자 내에서 정의되지 않아 버그로 이어질 수 있습니다.
+
+    - super(props) 를 먼저 선언해 줘야 그 이후에 this 를 사용할 수 있다.
+
+    - 위의 방식으로 진행 하지 않은 상태의 this.prop 은 undefined 로 반환 되어 진다.
+
+7. state
+    - this.state를 지정할 수 있는 유일한 공간은 constructor(생성자) 에서 가능
+    - state 업데이트는 비동적일 수도 있다. / ( 비동기는 많으면 많을수록 리소스를 많이 쓴다. )
+    - 상태변경은 setState 쓰자.
+    - ex)
+        1. (이 방법도 가능은 하지만 render 함수 호출이 안되므로 사용을 권장하지 않음.)
+        <button onClick={(e) => this.StateChange('direct', e)}>
+            state 직접(direct) 변경
+        </button>
+        
+        2. (이 방식이 render 함수 호출도 이루어진다. (권장 방식)
+        <button onClick={(e) => this.StateChange('setState', e)}>
+            setState로(setState) 변경
+        </button>
+
+8. Component(컴포넌트)
+    - 컴포넌트의 이름은 항상 대문자로 시작.
+
+9. props / 객체
+    - 읽기 전용 데이터
+    - 지정할 모듈 파일에 import PropTypes from 'prop-types'; 를 입력
