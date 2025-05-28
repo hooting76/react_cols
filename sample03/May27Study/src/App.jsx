@@ -1,27 +1,26 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
+import React from 'react'
+// import './App.css';
+// import 'bootstrap/dist/css/bootstrap.min.css'
 
-import HookSample from "./HookSample"
+import ContextApi from './ContextApiComponent'
 
 function App() {
-  // const [count, setCount] = useState(0)
 
-  return (
-    <>
-     <div id="div1">
-      <h1>리액트 개발</h1>
-      <p>HTML 적용</p>
-      
-       {/* - React Hook 
-       : https://ko.legacy.reactjs.org/docs/hooks-intro.html
-       : https://ko.legacy.reactjs.org/docs/hooks-overview.html */}
+    //  컨택스트(Context)
+    // : https://ko.legacy.reactjs.org/docs/context.html
+    
+    return (
+      <div id="div1" style={{height : 200, width : 600, backgroundColor : 'cyan'}}>
+        
+        <h2 className="d-flex justify-content-center py-4">
+          리액트(react) Context(컨택스트)
+        </h2>
+        
+        <ContextApi />
 
-      <HookSample />
-    </div>
-    </>
-  )
+      </div>
+    );
+
 }
 
-export default App
+export default App;
