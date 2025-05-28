@@ -77,3 +77,33 @@
 9. props / 객체
     - 읽기 전용 데이터
     - 지정할 모듈 파일에 import PropTypes from 'prop-types'; 를 입력
+
+
+0528
+1. 라이브러리 의존성 정보
+ - 통합 관리
+ - 원격 저장소 : (remote repository)
+ - 지역 저장소 : (local repository)
+ - 이러한 파일들을 받는 경우, 가끔씩 한두번 파일의 누락이 발생한다. 그러므로 인터넷 품질를 고려하여 유선포트(RJ-45) 사용 권장
+
+My to do list
+ 1. NAS 활용 방안
+    - DB서버 연결 설정(공유기의 포트포워딩 작업 및 기타 작업 필요)
+    - 이미지 관련해서 CDN으로 처리 할 수 있는 방법에 대한 고민
+    └ 이 경우는 웹 페이지를 올리면서 페이지에 이미지를 올려 호스팅 후, 그 호스팅된 이미지 주소를 가져오는 방식으로 우회하는 방법이 떠오르긴 함.
+    └ 일단, 직접적인 CDN 처리 방식은 없는 듯한 모양.
+
+ 2. node.js (express framework) 의 서버 위치
+    - back-end 영역의 서버는 어디로 둘것인가에 대한 고민.
+    - NAS 에 같이 관리 가능하면 좋겠지만, NAS의 하드웨어 스펙이 낮아서 어려울 듯.
+    - 집에 방치중인 노트북을 back-end server로 굴릴지 고민중
+
+3. 프로젝트 plan
+    - 분업 or co-op
+    - git branch version manage.
+    - master - live server
+      └ a branch --- > module --->                ---> master pull request ---> module ---> ....
+      └ b branch --- > module ---> master 로 병합 ---> master pull request ---> module ---> .... 
+      └ c branch --- > module --->                ---> master pull request ---> module ---> ....
+    - IDE : vscode(one side way)
+    - 
