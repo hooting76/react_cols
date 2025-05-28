@@ -11,21 +11,16 @@ class Main_module extends Component {
     let month = ('0' + (today.getMonth() + 1)).slice(-2);
     let day = ('0' + today.getDate()).slice(-2);
     let today_num = year + month + day;
-    let hours = (today.getHours() - 1) + "00";
 
     var xhr = new XMLHttpRequest();
     var url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst'; /*URL*/
-
-    if(svcKey == null){
-      return false;
-    };
     
     var queryParams = '?' + encodeURIComponent('serviceKey') + '='+ svcKey[0].key; /*Service Key*/
     queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('12'); /*한 페이지 결과 11 수*/
     queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /*페이지번호*/
     queryParams += '&' + encodeURIComponent('dataType') + '=' + encodeURIComponent('JSON'); /*요청자료형식(XML/JSON) Default: XML*/
     queryParams += '&' + encodeURIComponent('base_date') + '=' + encodeURIComponent(today_num); /*	‘년 월 일 발표*/
-    queryParams += '&' + encodeURIComponent('base_time') + '=' + encodeURIComponent(hours); /*06시 발표(정시단위)*/
+    queryParams += '&' + encodeURIComponent('base_time') + '=' + encodeURIComponent('0500'); /*06시 발표(정시단위)*/
     queryParams += '&' + encodeURIComponent('nx') + '=' + encodeURIComponent('37'); /*	예보지점의 X 좌표값*/
     queryParams += '&' + encodeURIComponent('ny') + '=' + encodeURIComponent('126'); /*	예보지점의 Y 좌표값*/
     xhr.open('GET', url + queryParams);   
@@ -185,9 +180,18 @@ class Main_module extends Component {
                 break;
             };
         });
-        console.log(Weather_info_list_arr);
-        // loadModelAndPredict(weather_info_list_arr);
-        
+        // console.log(Weather_info_list_arr); ok
+        let list_wrap = document.querySelector('.list_wrap');
+
+        Weather_info_list_arr.forEach(element => {
+            let list_li = document.createElement("li");
+            list_li.className = Object.keys(element);
+
+            list_li.innerText = list_li.className;
+            console.log(list_li);
+            list_wrap.innerText += list_li;
+            console.log(list_wrap);            
+        });
     };
 }; xhr.send(''); };
 
