@@ -1,0 +1,228 @@
+Microsoft Windows [Version 10.0.19045.5854]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Administrator>mysql
+'mysql'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+C:\Users\Administrator>mysql -uroot -p 1234
+'mysql'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+C:\Users\Administrator>set path=%INTEL_DEV_REDIST%redist\intel64_win\compiler;%INTEL_DEV_REDIST%redist\intel64\compiler;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%SYSTEMROOT%\System32\OpenSSH\;C:\Program Files\Bandizip\;C:\Program Files\dotnet\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\C:\Program Files\MariaDB 11.7\bin;C:\Users\Administrator\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.15.6-hotspot\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;C:\Users\Administrator\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Administrator\AppData\Roaming\npm
+
+C:\Users\Administrator>mysql -uroot -p 1234
+'mysql'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+C:\Users\Administrator>set path=%INTEL_DEV_REDIST%redist\intel64_win\compiler;%INTEL_DEV_REDIST%redist\intel64\compiler;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%SYSTEMROOT%\System32\OpenSSH\;C:\Program Files\Bandizip\;C:\Program Files\dotnet\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\C:\Program Files\MariaDB 11.7\bin;C:\Users\Administrator\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.15.6-hotspot\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;C:\Users\Administrator\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Administrator\AppData\Roaming\npm
+
+C:\Users\Administrator>mysql -uroot -p 1234
+'mysql'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+C:\Users\Administrator>mysql -uroot -p1234
+'mysql'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+C:\Users\Administrator>set path=%INTEL_DEV_REDIST%redist\intel64_win\compiler;%INTEL_DEV_REDIST%redist\intel64\compiler;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%SYSTEMROOT%\System32\OpenSSH\;C:\Program Files\Bandizip\;C:\Program Files\dotnet\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\MariaDB 11.7\bin;C:\Users\Administrator\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.15.6-hotspot\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;C:\Users\Administrator\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Administrator\AppData\Roaming\npm;
+
+C:\Users\Administrator>mysql -uroot -p1234
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 11.7.2-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database express;
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [(none)]> use express;
+Database changed
+MariaDB [express]> create table temp_user (
+    ->
+    ->     name varchar(100),
+    ->
+    ->     email varchar(100),
+    ->
+    ->     phone varchar(13),
+    ->
+    ->     description varchar(200)
+    ->
+    -> );
+Query OK, 0 rows affected (0.015 sec)
+
+MariaDB [express]> insert into temp_user values ('abcd', 'abcd@abcd.com', '01012345678', '상담함');
+Query OK, 1 row affected (0.019 sec)
+
+MariaDB [express]>
+MariaDB [express]> select * from temp_user;
++------+---------------+-------------+-------------+
+| name | email         | phone       | description |
++------+---------------+-------------+-------------+
+| abcd | abcd@abcd.com | 01012345678 | 상담함      |
++------+---------------+-------------+-------------+
+1 row in set (0.001 sec)
+
+MariaDB [express]>
+MariaDB [express]> insert into temp_user values ('abcd', 'abcd@abcd.com', '01012345678', '상담함');
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [express]> Query OK, 1 row affected (0.019 sec)
+    -> select * from temp_user;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 1 row affected (0.019 sec)
+select * from temp_user' at line 1
+MariaDB [express]> select * from temp_user;
++------+---------------+-------------+-------------+
+| name | email         | phone       | description |
++------+---------------+-------------+-------------+
+| abcd | abcd@abcd.com | 01012345678 | 상담함      |
+| abcd | abcd@abcd.com | 01012345678 | 상담함      |
++------+---------------+-------------+-------------+
+2 rows in set (0.000 sec)
+
+MariaDB [express]> show table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [express]> SHOW TABLE;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [express]> show express
+    ->
+    -> asd
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'express
+
+asd' at line 3
+MariaDB [express]> select * from temp_user;
++------+---------------+-------------+-------------+
+| name | email         | phone       | description |
++------+---------------+-------------+-------------+
+| abcd | abcd@abcd.com | 01012345678 | 상담함      |
+| abcd | abcd@abcd.com | 01012345678 | 상담함      |
++------+---------------+-------------+-------------+
+2 rows in set (0.001 sec)
+
+MariaDB [express]> select * from temp_user where name = 'abcd';
++------+---------------+-------------+-------------+
+| name | email         | phone       | description |
++------+---------------+-------------+-------------+
+| abcd | abcd@abcd.com | 01012345678 | 상담함      |
+| abcd | abcd@abcd.com | 01012345678 | 상담함      |
++------+---------------+-------------+-------------+
+2 rows in set (0.001 sec)
+
+MariaDB [express]> select name from temp_user
+    -> description like '%상담';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'like '%상담'' at line 2
+MariaDB [express]> select name from temp_user
+    -> description like '%상담%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'like '%상담%'' at line 2
+MariaDB [express]> select name from temp_user
+    -> description like '%상담%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'like '%상담%'' at line 2
+MariaDB [express]> select name from temp_user
+    -> where description like '%상담%';
++------+
+| name |
++------+
+| abcd |
+| abcd |
++------+
+2 rows in set (0.000 sec)
+
+MariaDB [express]> update temp_user set description ='열심히 공부 함.'
+    -> where name='abcd';
+Query OK, 2 rows affected (0.007 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+MariaDB [express]> select * from temp_user;
++------+---------------+-------------+-----------------------+
+| name | email         | phone       | description           |
++------+---------------+-------------+-----------------------+
+| abcd | abcd@abcd.com | 01012345678 | 열심히 공부 함.       |
+| abcd | abcd@abcd.com | 01012345678 | 열심히 공부 함.       |
++------+---------------+-------------+-----------------------+
+2 rows in set (0.000 sec)
+
+MariaDB [express]> update temp_user set description ='열심히 공부 하길 바람.'
+    -> where name='abcd' top 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'top 1' at line 2
+MariaDB [express]> update temp_user set description ='열심히 공부 하길 바람.'
+    -> where top 1 name='abcd';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '1 name='abcd'' at line 2
+MariaDB [express]> update temp_user set name = 'qwer'
+    -> where top 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '1' at line 2
+MariaDB [express]> delete from temp_user where name='abcd';
+Query OK, 2 rows affected (0.007 sec)
+
+MariaDB [express]> select * from temp_user;
+Empty set (0.000 sec)
+
+MariaDB [express]> insert into temp_user values ('qwer', 'abcd@abcd.com', '01012345678', '상담함');
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [express]> select * from temp_user;
++------+---------------+-------------+-------------+
+| name | email         | phone       | description |
++------+---------------+-------------+-------------+
+| qwer | abcd@abcd.com | 01012345678 | 상담함      |
++------+---------------+-------------+-------------+
+1 row in set (0.000 sec)
+
+MariaDB [express]> exit
+Bye
+
+C:\Users\Administrator>mysql -uroot -p
+Enter password: ****
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 4
+Server version: 11.7.2-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use express
+Database changed
+MariaDB [express]> show tables
+    -> ;
++-------------------+
+| Tables_in_express |
++-------------------+
+| temp_user         |
++-------------------+
+1 row in set (0.001 sec)
+
+MariaDB [express]> describe temp_user;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| name        | varchar(100) | YES  |     | NULL    |       |
+| email       | varchar(100) | YES  |     | NULL    |       |
+| phone       | varchar(13)  | YES  |     | NULL    |       |
+| description | varchar(200) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+4 rows in set (0.028 sec)
+
+MariaDB [express]> alter table temp_user add primary key(name);
+Query OK, 0 rows affected (0.028 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [express]> describe temp_user;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| name        | varchar(100) | NO   | PRI | NULL    |       |
+| email       | varchar(100) | YES  |     | NULL    |       |
+| phone       | varchar(13)  | YES  |     | NULL    |       |
+| description | varchar(200) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+4 rows in set (0.020 sec)
+
+MariaDB [express]> insert into temp_user values ('qwer', 'abcd@abcd.com', '01012345678', '상담함');
+ERROR 1062 (23000): Duplicate entry 'qwer' for key 'PRIMARY'
+
+MariaDB [express]> insert into temp_user values ('asdf', 'asdf@abcd.com', '01011223344', '상담안함');
+Query OK, 1 row affected (0.007 sec)
