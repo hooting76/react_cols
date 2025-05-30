@@ -1,15 +1,38 @@
 @charset "UTF-8";
 
+.wrap {
+    width: 100vw;
+    /* background-color: yellow;   */
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+
+.member-wrap {
+
+    /* background-color: green;     */
+}
+
 /* 입력 패널 */
 .input-fld-pnl {
     
     display: flex;
     align-items: flex-start;
 
-    width: 500px;
+    width: 600px;
     padding: 10px 0;    
 
     font-size: 1em;
+}
+
+/* 전송/취소 버튼 패널 */
+.btn-fld-pnl {
+
+    width: 100%;
+    /* background: orange; */
+    display: flex;
+    align-items: center;
+    justify-content : center;
 }
 
 /* 라벨(공통) */
@@ -22,68 +45,13 @@ label {
     padding:0 10px;
 }
 
-/* 필드 아이콘 */
-label .icon-fld {
-
-    color: #333;
-    font-size: 2em;
-}
-
-/*  텍스트 라벨 */
-.txt-label {
-
-    padding: 10px 0 10px 10px;
-}
-
-/* 입력 필드(요소) */
-.input-fld {
-
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    width: 300px;
-    height: 35px;
-
-    margin-left: 20px;
-    padding: 0 10px;
-}
-
-/* 입력 필드(요소) 및 textarea : focus */
-.input-fld:focus, #content:focus {
+.input-fld-pnl {
     
-    /* 여기서 외곽선 색은 border-color가 아닌 
-    outline-color 로 적용할 것 */
-    outline-color: #60C5F1;    
-}    
+    display: flex;
+    align-items: flex-start;
 
-/* 상담 내용 문단 필드 */
-#content {
+    width: 600px;
+    padding: 10px 0;    
 
-    resize: none;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-
-    margin-left: 20px;
-    padding-left: 10px;
-    
-    width: 300px;    
-    height: 200px;
-    
-    padding: 10px;
-}
-
-#Description{
-    resize: none;
-}
-
-.wrap{
-    min-width: 500px;
-    margin: 0 auto;
-    border-radius: 15px;
-    border: 1px solid #ccc;
-    padding: 15px;
-    box-sizing: border-box;
-}
-body{
-    align-items: center;
-    justify-content: center;
+    font-size: 1em;
 }

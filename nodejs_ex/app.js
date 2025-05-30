@@ -7,7 +7,11 @@ var logger = require('morgan');
 // routes selectors call(require)
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var backendRouter = require('./routes/backend');
+// action.js 라우터 등록 
+var actionRouter = require('./routes/action');
+var actionRestRouter = require('./routes/actionRest');
+var actionReactFormRouter = require('./routes/actionReactForm');
+
 
 // add a CORS 
 const cors = require('cors');
@@ -27,7 +31,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // routes path name defined.
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/backend', backendRouter);
+// action.js 라우터에 대한 URL주소 등록
+app.use('/action', actionRouter);
+app.use('/actionRest', actionRestRouter);
+app.use('/actionReactForm', actionReactFormRouter);
+
 
 // add a CORS 
 app.use(cors());
