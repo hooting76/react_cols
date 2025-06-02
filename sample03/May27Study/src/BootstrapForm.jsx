@@ -218,7 +218,7 @@ function BootstrapForm() {
 
             {/* <!-- 회원정보 저장 메시지 Modal --> */}
             {/* https://reactstrap.github.io/?path=/docs/components-modal--modal */}
-            <Modal isOpen={modal} toggle={toggle} size="sm" centered="true" fade="false">
+            <Modal isOpen={modal} toggle={toggle} size="sm" centered={false} fade={false} >
                 <ModalHeader toggle={toggle}>메시지</ModalHeader>
                 <ModalBody>     
                     {saveMsg}               
