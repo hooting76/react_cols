@@ -36,9 +36,6 @@ function BootstrapForm() {
     // 폼 초기화
     const formatInit = (e) => {
 
-        // console.log("폼 초기화");
-        // console.log("e target : ", e.target);
-
         // 입력된 폼의 내용들을 등록
         document.getElementById("name").value = "";        
         document.getElementById("email").value = "";
@@ -46,22 +43,14 @@ function BootstrapForm() {
         document.getElementById("description").value = "";
     } //
 
-
     // AJAX(Promise/fetch) 코드
     const formCheck = async(e) => {
-        
-        // console.log("e target : ", e.target);
 
         // 입력된 폼의 내용들을 등록
         let name = document.getElementById("name");        
         let email = document.getElementById("email");
         let phone = document.getElementById("phone");
         let description = document.getElementById("description");
-
-        // console.log("name : ", name.value);
-        // console.log("email : ", email.value);
-        // console.log("phone : ", phone.value);
-        // console.log("description : ", description.value);
 
         // 폼필드(form field) 데이터 유효성 점검(form validation)
 
@@ -81,8 +70,6 @@ function BootstrapForm() {
             setNameError("이름은 한글로 작성하십시오.");
 
         } //
-
-        ///////////////////////////////////////////////////////////
 
         // 이메일 필드에 대한 점검
         let emailRegex = /^[a-zA-Z0-9_+.-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z0-9]{2,4}$/;
@@ -125,8 +112,6 @@ function BootstrapForm() {
         // 상담내용 필드에 대한 점검
         let descriptionRegex = /^[0-9a-zA-Z가-힣ㄱ-ㅎ\W]{2,}$/; // 최소 2글자 이상
 
-        console.log("description.value :" , description.value);
-
         if (descriptionRegex.test(description.value) == true) {
             
             console.log("적합한 상담내용");
@@ -139,38 +124,18 @@ function BootstrapForm() {
             setDescriptionCheck(false);
             setDescriptionError("상담내용은 최소 2자 이상을 기록하십시오.");
 
-        } //
-
-    }
-
-    ///////////////////////////////////////////////////////////
+        }
+    };
 
     const formSubmit = async(e) => {
 
-        // console.log("----------------------------------------------")
- 
-        // console.log("nameCheck : ", nameCheck);
-        // console.log("emailCheck : ", emailCheck);
-        // console.log("phoneCheck : ", phoneCheck);
-        // console.log("descriptionCheck : ", descriptionCheck);
- 
-        ///////////////////////////////////////////////////////////
-
-        if ((nameCheck == true) && (emailCheck == true) && 
-            (phoneCheck == true) && (descriptionCheck == true))
-        {
-            console.log("폼점검 완료. 전송 준비");
+        if ((nameCheck == true) && (emailCheck == true) && (phoneCheck == true) && (descriptionCheck == true)){
 
              // 입력된 폼의 내용들을 등록
             let name = document.getElementById("name").value;        
             let email = document.getElementById("email").value;
             let phone = document.getElementById("phone").value;
             let description = document.getElementById("description").value;
-
-            // console.log("name : ", name);
-            // console.log("email : ", email);
-            // console.log("phone : ", phone);
-            // console.log("description : ", description);
 
             // 회원정보 전송 부분
 
@@ -183,14 +148,8 @@ function BootstrapForm() {
                 credentials: "same-origin"				   
             });
 
-            // let body = await response.json();
-            // console.log("json body : " + body);
-
             await response.json().then((body) => {
-
-                // console.log("response body : " + body);
                 var json = JSON.parse(body);
-                // console.log("msg : ", json.msg);
 
                 setModal(true); // Modal 열기
                 setSaveMsg("회원 정보 " + json.msg); // Modal에 메시지 출력 // 저장 성공
@@ -201,15 +160,9 @@ function BootstrapForm() {
             });
 
         } else {
-
-            // console.log("폼점검 실패");
-
-            // console.log("descriptionCheck : ", descriptionCheck);
-
             e.preventDefault();
-        } // 
-        
-    } //
+        }        
+    };
 
     return (
 
