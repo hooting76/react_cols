@@ -14,7 +14,10 @@ let dao = {
             console.log("connection : ", conn);
 
             // https://github.com/mariadb-corporation/mariadb-connector-nodejs/blob/master/documentation/promise-api.md#close--void
-            const res = await conn.query('INSERT INTO temp_user VALUES (?, ?, ?, ?)', 
+            // const idx_prev = await conn.query('SELECT IDX FROM temp_user ORDER BY IDX DESC LIMIT 1;');
+            // console.log("idx_prev : " + idx_prev);
+
+            const res = await conn.query('INSERT INTO temp_user VALUES (IDX, ?, ?, ?, ?)', 
                                          [user.name, user.email, user.phone, user.description]);
 
             // console.log(res);
