@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+.wrap {
+    width: 100vw;
+    /* background-color: yellow;   */
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+
+.member-wrap {
+
+    /* background-color: green;     */
+}
+
+/* 입력 패널 */
+.input-fld-pnl {
+    
+    display: flex;
+    align-items: flex-start;
+
+    width: 600px;
+    padding: 10px 0;    
+
+    font-size: 1em;
+}
+
+/* 전송/취소 버튼 패널 */
+.btn-fld-pnl {
+
+    width: 100%;
+    /* background: orange; */
+    display: flex;
+    align-items: center;
+    justify-content : center;
+}
+
+/* 라벨(공통) */
+label {
+
+    display: flex;
+    align-items: center;
+    width: 100px;
+
+    padding:0 10px;
+}
+
+.input-fld-pnl {
+    
+    display: flex;
+    align-items: flex-start;
+
+    width: 600px;
+    padding: 10px 0;    
+
+    font-size: 1em;
+}
